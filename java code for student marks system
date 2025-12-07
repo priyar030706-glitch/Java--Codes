@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class StudentMarksSystem {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] names = new String[50];
+        int[] ages = new int[50];
+        double[] marks = new double[50];
+        int count = 0;
+
+        while (true) {
+            System.out.println("\n1. Add Student");
+            System.out.println("2. Show Students");
+            System.out.println("3. Search Student");
+            System.out.println("0. Exit");
+            System.out.print("Enter choice: ");
+            int ch = sc.nextInt();
+            sc.nextLine();
+
+            if (ch == 1) {
+                System.out.print("Enter name: ");
+                names[count] = sc.nextLine();
+                System.out.print("Enter age: ");
+                ages[count] = sc.nextInt();
+                System.out.print("Enter marks: ");
+                marks[count] = sc.nextDouble();
+                sc.nextLine();
+                count++;
+                System.out.println("Student added!");
+            }
+            else if (ch == 2) {
+                for (int i = 0; i < count; i++) {
+                    System.out.println(names[i] + " | Age: " + ages[i] + " | Marks: " + marks[i]);
+                }
+            }
+            else if (ch == 3) {
+                System.out.print("Enter name to search: ");
+                String s = sc.nextLine().toLowerCase();
+                boolean found = false;
+
+                for (int i = 0; i < count; i++) {
+                    if (names[i].toLowerCase().contains(s)) {
+                        System.out.println(names[i] + " | Age: " + ages[i] + " | Marks: " + marks[i]);
+                        found = true;
+                    }
+                }
+                if (!found) System.out.println("Not found!");
+            }
+            else if (ch == 0) break;
+        }
+    }
+}
