@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class RailwayReservation {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int totalSeats = 100;      // you can change this number
+        int bookedSeats = 0;
+
+        while (true) {
+
+            System.out.println("\n--- Railway Reservation System ---");
+            System.out.println("1. Book Ticket");
+            System.out.println("2. Cancel Ticket");
+            System.out.println("3. Display Available Seats");
+            System.out.println("4. Exit");
+            System.out.print("Enter choice: ");
+
+            int choice = sc.nextInt();
+
+            // BOOK
+            if (choice == 1) {
+                if (bookedSeats < totalSeats) {
+                    bookedSeats++;
+                    System.out.println("🎉 Ticket Booked Successfully!");
+                    System.out.println("Your Seat Number: " + bookedSeats);
+                } else {
+                    System.out.println("❌ No Seats Available!");
+                }
+            }
+
+            // CANCEL
+            else if (choice == 2) {
+                if (bookedSeats > 0) {
+                    bookedSeats--;
+                    System.out.println("✔ Ticket Cancelled Successfully!");
+                } else {
+                    System.out.println("❌ No Tickets to Cancel!");
+                }
+            }
+
+            // DISPLAY AVAILABLE
+            else if (choice == 3) {
+                int available = totalSeats - bookedSeats;
+                System.out.println("Available Seats: " + available);
+            }
+
+            // EXIT
+            else if (choice == 4) {
+                System.out.println("Thank you! 😊");
+                break;
+            }
+
+            else {
+                System.out.println("Invalid choice! Try again.");
+            }
+        }
+
+        sc.close();
+    }
+}
