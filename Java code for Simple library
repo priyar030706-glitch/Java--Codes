@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SimpleLibrary {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> books = new ArrayList<>();
+
+        while (true) {
+            System.out.println("\n1. Add Book");
+            System.out.println("2. Show Books");
+            System.out.println("3. Exit");
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            if (choice == 1) {
+
+                System.out.print("Enter book name: ");
+                String name = sc.nextLine();
+                books.add(name);  // add unlimited
+                System.out.println("Book Added!");
+
+            } else if (choice == 2) {
+
+                if (books.isEmpty()) {
+                    System.out.println("No books available.");
+                } else {
+                    System.out.println("\nAvailable Books:");
+                    for (String b : books) {
+                        System.out.println("- " + b);
+                    }
+                }
+
+            } else if (choice == 3) {
+                System.out.println("Thank you!");
+                break;
+
+            } else {
+                System.out.println("Invalid choice!");
+            }
+        }
+    }
+}
