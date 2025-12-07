@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class SimpleATM {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int pin = 1234;
+        int balance = 5000;
+
+        System.out.print("Enter PIN: ");
+        int userPin = sc.nextInt();
+
+        if (userPin != pin) {
+            System.out.println("Wrong PIN!");
+            return;
+        }
+
+        while (true) {
+            System.out.println("\n1. Check Balance");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("0. Exit");
+            System.out.print("Choice: ");
+            int ch = sc.nextInt();
+
+            if (ch == 1) {
+                System.out.println("Balance: " + balance);
+            }
+            else if (ch == 2) {
+                System.out.print("Enter amount: ");
+                balance += sc.nextInt();
+                System.out.println("Amount deposited.");
+            }
+            else if (ch == 3) {
+                System.out.print("Enter amount: ");
+                int amt = sc.nextInt();
+                if (amt <= balance) {
+                    balance -= amt;
+                    System.out.println("Withdraw successful.");
+                } else {
+                    System.out.println("Insufficient balance!");
+                }
+            }
+            else if (ch == 0) break;
+        }
+    }
+}
